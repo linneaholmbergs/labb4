@@ -20,7 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements FragmentA.FragmentAListener, FragmentB.FragmentBListener{
 
     private DrawerLayout mDrawer;
     private boolean mUserLearnedDrawer;
@@ -30,11 +30,14 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle drawerToggle;
     private static final String PREFERENCES_FILE = "myapplication_settings";
     private int color;
+    private FragmentA fragmentA;
+    private FragmentB fragmentB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -53,9 +56,27 @@ public class MainActivity extends AppCompatActivity {
         // Tie DrawerLayout events to the ActionBarToggle
         mDrawer.addDrawerListener(drawerToggle);
 
+        fragmentA = new FragmentA();
+        fragmentB = new FragmentB();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.container_a,fragmentA).replace(R.id.container_b,fragmentB).commit();
+
+
+
         loadData();
         setData();
     }
+
+    @Override
+    public void onInputASent(CharSequence input) {
+        fragmentB.updateEditText(input);
+    }
+
+    @Override
+    public void onInputBSent(CharSequence input) {
+        fragmentA.updateEditText(input);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.setting_menu,menu);
@@ -142,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Insert the fragment by replacing any existing fragment
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.placeholder, fragment).commit();
+        fragmentManager.beginTransaction().remove(fragmentA).remove(fragmentB).replace(R.id.placeholder, fragment).commit();
 
         // Highlight the selected item has been done by NavigationView
         menuItem.setChecked(true);
@@ -166,10 +187,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadData(){
         SharedPreferences sharedPreferences = getSharedPreferences("Toolbarcolor",MODE_PRIVATE);
-        color = sharedPreferences.getInt("color",R.color.colorwhite);
+        color = sharedPreferences.getInt("color",getResources().getColor(R.color.colorwhite));
 
     }
     public void setData(){
+
         nvDrawer.setBackgroundColor(color);
 
     }
