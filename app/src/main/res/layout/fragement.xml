@@ -23,12 +23,7 @@
 
     </com.google.android.gms.maps.MapView>
 
-    <WebView
-        android:id="@+id/webvy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
-    </WebView>
 
 
 

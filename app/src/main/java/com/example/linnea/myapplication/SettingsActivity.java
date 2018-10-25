@@ -37,6 +37,8 @@ public class SettingsActivity extends AppCompatActivity {
         mYellow = findViewById(R.id.yellow);
         backButton = findViewById(R.id.backButton);
 
+        
+
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
