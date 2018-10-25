@@ -4,16 +4,17 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_first_fragment"
-            android:icon="@drawable/one"
-            android:title="Google Maps" />
+            android:icon="@drawable/ic_my_location_white"
+            android:title="Google Maps"
+            />
         <item
             android:id="@+id/nav_second_fragment"
-            android:icon="@drawable/two"
-            android:title="Om App" />
+            android:icon="@drawable/ic_photo_camera_white"
+            android:title="Bild" />
         <item
             android:id="@+id/nav_third_fragment"
-            android:icon="@drawable/three"
-            android:title="Third" />
+            android:icon="@drawable/ic_shopping_cart_white"
+            android:title="Snus Factory" />
     </group>
 
 

@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadData(){
         SharedPreferences sharedPreferences = getSharedPreferences("Toolbarcolor",MODE_PRIVATE);
-        color = sharedPreferences.getInt("color",000000);
+        color = sharedPreferences.getInt("color",R.color.colorwhite);
 
     }
     public void setData(){
