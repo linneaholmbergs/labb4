@@ -29,11 +29,13 @@ public class MainActivity extends AppCompatActivity {
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
     private ActionBarDrawerToggle drawerToggle;
     private static final String PREFERENCES_FILE = "myapplication_settings";
+    private int color;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -51,7 +53,15 @@ public class MainActivity extends AppCompatActivity {
         // Tie DrawerLayout events to the ActionBarToggle
         mDrawer.addDrawerListener(drawerToggle);
 
+        loadData();
+        setData();
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.setting_menu,menu);
+        return true;
+    }
+
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -74,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
             mDrawer.openDrawer(GravityCompat.START);
             mUserLearnedDrawer = true;
             saveSharedSetting(this, PREF_USER_LEARNED_DRAWER, "true");
+
+
         }
 
         return new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.drawer_open,  R.string.drawer_close);
@@ -81,6 +93,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(item.getItemId() == R.id.settings){
+            Intent myIntent = new Intent(MainActivity.this,SettingsActivity.class);
+            startActivityForResult(myIntent,0);
+        }
+
         if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
@@ -146,7 +164,15 @@ public class MainActivity extends AppCompatActivity {
         return sharedPref.getString(settingName, defaultValue);
     }
 
+    public void loadData(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Toolbarcolor",MODE_PRIVATE);
+        color = sharedPreferences.getInt("color",000000);
 
+    }
+    public void setData(){
+        nvDrawer.setBackgroundColor(color);
+
+    }
 
 
 }

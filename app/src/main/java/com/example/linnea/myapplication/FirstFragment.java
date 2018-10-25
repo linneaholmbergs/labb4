@@ -70,6 +70,7 @@ public class FirstFragment extends Fragment implements OnMapReadyCallback, Googl
         mMap.setOnMyLocationButtonClickListener(onMyLocationButtonClickListener);
         mMap.setOnMyLocationClickListener(onMyLocationClickListener);
         enableMyLocationIfPermitted();
+        showDefaultLocation();
 
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.setMinZoomPreference(3);
@@ -126,8 +127,9 @@ public class FirstFragment extends Fragment implements OnMapReadyCallback, Googl
     }
     private void showDefaultLocation() {
 
-        LatLng redmond = new LatLng(-122.121512, 47.6739881);
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(redmond));
+        LatLng borlange = new LatLng(60.48699, 15.41018);
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(borlange));
+        mMap.addMarker(new MarkerOptions().position(borlange).title("Högskolan Dalarna"));
     }
 
     private GoogleMap.OnMyLocationButtonClickListener onMyLocationButtonClickListener =

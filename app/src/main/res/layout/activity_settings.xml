@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsActivity"
+    android:orientation="vertical"
+    android:id="@+id/activitysettings"
+    >
+
+    <android.support.v7.widget.Toolbar
+
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ändra färg på appen"
+        android:textSize="20dp"
+        android:padding="20dp"/>
+
+    <Switch
+        android:id="@+id/rosa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/pink_switch"
+        android:padding="20dp"
+        />
+
+    <Switch
+        android:id="@+id/blue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/blue_switch"
+        android:padding="20dp"
+         />
+
+    <Switch
+        android:id="@+id/yellow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/yellow_switch"
+        android:padding="20dp"
+         />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gå tillbaka"
+        android:id="@+id/backButton"/>
+</LinearLayout>
